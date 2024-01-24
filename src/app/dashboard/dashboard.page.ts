@@ -6,21 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.page.scss'],
 })
 export class DashboardPage implements OnInit {
+  constructor() {}
+  isDivVisible = false;
+  KeyReturn = false;
 
-  constructor() { }
-	 isDivVisible = false;
-	 KeyReturn = false;
+  toggleDiv() {
+    this.isDivVisible = !this.isDivVisible;
+  }
 
-	  toggleDiv() {
-		this.isDivVisible = !this.isDivVisible;
-	  }
-	  
-	  
-	  KeyButton() {
-		this.KeyReturn = !this.KeyReturn;
-	  }
-	 
-		
-		ngOnInit() {
-	  }
+  KeyButton() {
+    this.KeyReturn = !this.KeyReturn;
+  }
+
+  ngOnInit() {}
 }

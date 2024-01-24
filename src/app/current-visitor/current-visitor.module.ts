@@ -13,8 +13,8 @@ import { CurrentVisitorPage } from './current-visitor.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    CurrentVisitorPageRoutingModule
+    CurrentVisitorPageRoutingModule,
   ],
-  declarations: [CurrentVisitorPage]
+  declarations: [CurrentVisitorPage],
 })
 export class CurrentVisitorPageModule {}

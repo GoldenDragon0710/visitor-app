@@ -1,49 +1,61 @@
 <ion-tabs>
-
   <ion-tab-bar slot="bottom">
     <ion-tab-button tab="home-app" href="/tabs/home-app">
       <ion-icon name="home-outline" class="inact"></ion-icon>
-      <ion-icon name="home"  class="active-show"></ion-icon>
+      <ion-icon name="home" class="active-show"></ion-icon>
       <ion-label>Home</ion-label>
     </ion-tab-button>
 
     <ion-tab-button tab="history" href="/tabs/history">
       <ion-icon name="document-text-outline" class="inact"></ion-icon>
-      <ion-icon name="document-text"  class="active-show"></ion-icon>
+      <ion-icon name="document-text" class="active-show"></ion-icon>
       <ion-label>History</ion-label>
     </ion-tab-button>
 
     <ion-tab-button (click)="KeyButton()">
       <ion-icon name="lock-open-outline" class="inact"></ion-icon>
-      <ion-icon name="lock-open"  class="active-show"></ion-icon>
+      <ion-icon name="lock-open" class="active-show"></ion-icon>
       <ion-label>Return Key</ion-label>
     </ion-tab-button>
-	<ion-tab-button>
+    <ion-tab-button>
       <ion-icon name="person-outline" class="inact"></ion-icon>
-      <ion-icon name="person"  class="active-show"></ion-icon>
+      <ion-icon name="person" class="active-show"></ion-icon>
       <ion-label>Edit Details</ion-label>
     </ion-tab-button>
-	<ion-tab-button routerLink="/login">
+    <ion-tab-button routerLink="/login">
       <ion-icon name="log-out-outline" class="inact"></ion-icon>
-      <ion-icon name="log-out"  class="active-show"></ion-icon>
+      <ion-icon name="log-out" class="active-show"></ion-icon>
       <ion-label>Sign Out</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
-
 </ion-tabs>
 
-
 <div class="content-popup key-return" *ngIf="KeyReturn">
-	<div class="data-inner">
-		<h5> Confirm Key Returned  </h5>
-		<p> Have you returned the keys? </p>
-		<ion-row>
-			<ion-col size="6">
-				 <ion-button color="primary" fill="outline" expand="block" class="cancle-save" (click)="KeyButton()" mode="md">No</ion-button>
-			</ion-col>
-			<ion-col size="6">
-				 <ion-button color="primary" expand="block" class="cancle-save" (click)="KeyButton()" mode="md">Yes</ion-button>
-			</ion-col>
-		</ion-row>
-	</div>
+  <div class="data-inner">
+    <h5>Confirm Key Returned</h5>
+    <p>Have you returned the keys?</p>
+    <ion-row>
+      <ion-col size="6">
+        <ion-button
+          color="primary"
+          fill="outline"
+          expand="block"
+          class="cancle-save"
+          (click)="KeyButton()"
+          mode="md"
+          >No</ion-button
+        >
+      </ion-col>
+      <ion-col size="6">
+        <ion-button
+          color="primary"
+          expand="block"
+          class="cancle-save"
+          (click)="KeyButton()"
+          mode="md"
+          >Yes</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </div>
 </div>

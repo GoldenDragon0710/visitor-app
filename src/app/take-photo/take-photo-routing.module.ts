@@ -6,8 +6,8 @@ import { TakePhotoPage } from './take-photo.page';
 const routes: Routes = [
   {
     path: '',
-    component: TakePhotoPage
-  }
+    component: TakePhotoPage,
+  },
 ];
 
 @NgModule({

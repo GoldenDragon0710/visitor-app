@@ -6,106 +6,155 @@
 
 <ion-content [fullscreen]="true">
   <div class="dashboard-tabs">
-	  <ion-row>
-		<ion-col size="12" size-sm="5" size-md="3" size-lg="2" class="p-0">
-			<div class="left-panel">
-				
-				<div class="form-left">
-					<ul class="menu-lists">
-						<li class="active" routerLink="/dashboard">	
-							<span class="icon-me"> <ion-icon name="home-outline"></ion-icon> </span>
-							Home
-						</li>
-						<li routerLink="/roll-call">	
-							<span class="icon-me"> <ion-icon name="hand-right-outline"></ion-icon> </span>
-							Roll Call
-						</li>
-						<li (click)="KeyButton()">	
-							<span class="icon-me"> <ion-icon name="lock-open-outline"></ion-icon> </span>
-							Return Key
-						</li>
-						<li>	
-							<span class="icon-me"> <ion-icon name="warning-outline"></ion-icon> </span>
-							Evacuate
-						</li>
-					</ul>
-				</div>
-			</div>
-		</ion-col>
-		<ion-col size="12" size-sm="7" size-md="9" size-lg="10" class="p-0">
-			<div class="data-dashboard">
-				<div class="header-dashboard">
-					<h4> Cameron Williamson <span> 16th September 08:45 Am  </span> </h4>
-					<!--a href="javascript:void(0);" class="user-icons" > <ion-icon name="person-outline"></ion-icon> </a-->
-				</div>
-				<div class="table-main">
-					<h4 class="table-ttl"> Current Onsite Visitors </h4>
-					<table class="table table-design">
-						<thead>
-							<tr>
-								<th> Name </th>
-								<th> Visitor Type </th>
-								<th> time </th>
-								<th> Key ID </th>
-								<th> Action </th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td> Andrew Fuller </td>
-								<td> Staff </td>
-								<td> 09:00 </td>
-								<td> ABC5845 </td>
-								<td> <span class="logout-ic" (click)="toggleDiv()"> <ion-icon name="log-out-outline"></ion-icon> </span> </td>
-							</tr>
-							<tr>
-								<td> Janet Leverling </td>
-								<td> YouAudit </td>
-								<td> 09:00 </td>
-								<td> ABC5845 </td>
-								<td> <span class="logout-ic" (click)="toggleDiv()"> <ion-icon name="log-out-outline"></ion-icon> </span> </td>
-							</tr>
-							<tr>
-								<td> Robert King </td>
-								<td> Air Con Ltd </td>
-								<td> 09:00 </td>
-								<td> ABC5845 </td>
-								<td> <span class="logout-ic" (click)="toggleDiv()"> <ion-icon name="log-out-outline"></ion-icon> </span> </td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</ion-col>
-	  </ion-row>
-  </div>	
+    <ion-row>
+      <ion-col size="12" size-sm="5" size-md="3" size-lg="2" class="p-0">
+        <div class="left-panel">
+          <div class="form-left">
+            <ul class="menu-lists">
+              <li class="active" routerLink="/dashboard">
+                <span class="icon-me">
+                  <ion-icon name="home-outline"></ion-icon>
+                </span>
+                Home
+              </li>
+              <li routerLink="/roll-call">
+                <span class="icon-me">
+                  <ion-icon name="hand-right-outline"></ion-icon>
+                </span>
+                Roll Call
+              </li>
+              <li (click)="KeyButton()">
+                <span class="icon-me">
+                  <ion-icon name="lock-open-outline"></ion-icon>
+                </span>
+                Return Key
+              </li>
+              <li>
+                <span class="icon-me">
+                  <ion-icon name="warning-outline"></ion-icon>
+                </span>
+                Evacuate
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col size="12" size-sm="7" size-md="9" size-lg="10" class="p-0">
+        <div class="data-dashboard">
+          <div class="header-dashboard">
+            <h4>Cameron Williamson <span> 16th September 08:45 Am </span></h4>
+            <!--a href="javascript:void(0);" class="user-icons" > <ion-icon name="person-outline"></ion-icon> </a-->
+          </div>
+          <div class="table-main">
+            <h4 class="table-ttl">Current Onsite Visitors</h4>
+            <table class="table table-design">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Visitor Type</th>
+                  <th>time</th>
+                  <th>Key ID</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Andrew Fuller</td>
+                  <td>Staff</td>
+                  <td>09:00</td>
+                  <td>ABC5845</td>
+                  <td>
+                    <span class="logout-ic" (click)="toggleDiv()">
+                      <ion-icon name="log-out-outline"></ion-icon>
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Janet Leverling</td>
+                  <td>YouAudit</td>
+                  <td>09:00</td>
+                  <td>ABC5845</td>
+                  <td>
+                    <span class="logout-ic" (click)="toggleDiv()">
+                      <ion-icon name="log-out-outline"></ion-icon>
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Robert King</td>
+                  <td>Air Con Ltd</td>
+                  <td>09:00</td>
+                  <td>ABC5845</td>
+                  <td>
+                    <span class="logout-ic" (click)="toggleDiv()">
+                      <ion-icon name="log-out-outline"></ion-icon>
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
 </ion-content>
 <div class="content-popup" *ngIf="isDivVisible">
-	<div class="data-inner">
-		<h5> Confirm Key Returned </h5>
-		<p> Pete Stevens? </p>
-		<ion-row>
-			<ion-col size="6">
-				 <ion-button color="primary" fill="outline" expand="block" class="cancle-save" (click)="toggleDiv()" mode="md">No</ion-button>
-			</ion-col>
-			<ion-col size="6">
-				 <ion-button color="primary" expand="block" class="cancle-save" (click)="toggleDiv()" mode="md">Yes</ion-button>
-			</ion-col>
-		</ion-row>
-	</div>
+  <div class="data-inner">
+    <h5>Confirm Key Returned</h5>
+    <p>Pete Stevens?</p>
+    <ion-row>
+      <ion-col size="6">
+        <ion-button
+          color="primary"
+          fill="outline"
+          expand="block"
+          class="cancle-save"
+          (click)="toggleDiv()"
+          mode="md"
+          >No</ion-button
+        >
+      </ion-col>
+      <ion-col size="6">
+        <ion-button
+          color="primary"
+          expand="block"
+          class="cancle-save"
+          (click)="toggleDiv()"
+          mode="md"
+          >Yes</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </div>
 </div>
 
 <div class="content-popup key-return" *ngIf="KeyReturn">
-	<div class="data-inner">
-		<h5> Confirm Key Returned  </h5>
-		<p> Pete Stevens? </p>
-		<ion-row>
-			<ion-col size="6">
-				 <ion-button color="primary" fill="outline" expand="block" class="cancle-save" (click)="KeyButton()" mode="md">No</ion-button>
-			</ion-col>
-			<ion-col size="6">
-				 <ion-button color="primary" expand="block" class="cancle-save" (click)="KeyButton()" mode="md">Yes</ion-button>
-			</ion-col>
-		</ion-row>
-	</div>
+  <div class="data-inner">
+    <h5>Confirm Key Returned</h5>
+    <p>Pete Stevens?</p>
+    <ion-row>
+      <ion-col size="6">
+        <ion-button
+          color="primary"
+          fill="outline"
+          expand="block"
+          class="cancle-save"
+          (click)="KeyButton()"
+          mode="md"
+          >No</ion-button
+        >
+      </ion-col>
+      <ion-col size="6">
+        <ion-button
+          color="primary"
+          expand="block"
+          class="cancle-save"
+          (click)="KeyButton()"
+          mode="md"
+          >Yes</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </div>
 </div>

@@ -9,12 +9,7 @@ import { RollCallPageRoutingModule } from './roll-call-routing.module';
 import { RollCallPage } from './roll-call.page';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    RollCallPageRoutingModule
-  ],
-  declarations: [RollCallPage]
+  imports: [CommonModule, FormsModule, IonicModule, RollCallPageRoutingModule],
+  declarations: [RollCallPage],
 })
 export class RollCallPageModule {}

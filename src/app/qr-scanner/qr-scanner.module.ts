@@ -9,12 +9,7 @@ import { QrScannerPageRoutingModule } from './qr-scanner-routing.module';
 import { QrScannerPage } from './qr-scanner.page';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    QrScannerPageRoutingModule
-  ],
-  declarations: [QrScannerPage]
+  imports: [CommonModule, FormsModule, IonicModule, QrScannerPageRoutingModule],
+  declarations: [QrScannerPage],
 })
 export class QrScannerPageModule {}

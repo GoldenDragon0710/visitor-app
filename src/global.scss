@@ -24,22 +24,23 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800&display=swap");
 
-body, * {
-font-family: 'Lexend', sans-serif;
+body,
+* {
+  font-family: "Lexend", sans-serif;
 }
 .select-wrapper-inner {
-		width: 100%;
-		justify-content: space-between;
-		padding-right: 12px;
+  width: 100%;
+  justify-content: space-between;
+  padding-right: 12px;
 }
 .table-main {
-    overflow: auto;
-} 
+  overflow: auto;
+}
 
 @media only screen and (max-width: 575px) {
-	ion-content .left-panel {
-		min-height: auto !important;
-	}
+  ion-content .left-panel {
+    min-height: auto !important;
+  }
 }

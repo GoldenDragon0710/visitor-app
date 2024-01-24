@@ -9,24 +9,28 @@ const routes: Routes = [
     children: [
       {
         path: 'home-app',
-        loadChildren: () => import('../home-app/home-app.module').then(m => m.HomeAppPageModule)
+        loadChildren: () =>
+          import('../home-app/home-app.module').then(
+            (m) => m.HomeAppPageModule
+          ),
       },
       {
         path: 'history',
-        loadChildren: () => import('../history/history.module').then(m => m.HistoryPageModule)
+        loadChildren: () =>
+          import('../history/history.module').then((m) => m.HistoryPageModule),
       },
       {
         path: '',
         redirectTo: '/tabs/home-app',
-        pathMatch: 'full'
-      }
-    ]
+        pathMatch: 'full',
+      },
+    ],
   },
   {
     path: '',
     redirectTo: '/tabs/home-app',
-    pathMatch: 'full'
-  }
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({

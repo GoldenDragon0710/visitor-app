@@ -6,8 +6,8 @@ import { CurrentVisitorPage } from './current-visitor.page';
 const routes: Routes = [
   {
     path: '',
-    component: CurrentVisitorPage
-  }
+    component: CurrentVisitorPage,
+  },
 ];
 
 @NgModule({

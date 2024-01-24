@@ -9,12 +9,7 @@ import { TakePhotoPageRoutingModule } from './take-photo-routing.module';
 import { TakePhotoPage } from './take-photo.page';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    TakePhotoPageRoutingModule
-  ],
-  declarations: [TakePhotoPage]
+  imports: [CommonModule, FormsModule, IonicModule, TakePhotoPageRoutingModule],
+  declarations: [TakePhotoPage],
 })
 export class TakePhotoPageModule {}

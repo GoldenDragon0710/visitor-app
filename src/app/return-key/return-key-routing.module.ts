@@ -6,8 +6,8 @@ import { ReturnKeyPage } from './return-key.page';
 const routes: Routes = [
   {
     path: '',
-    component: ReturnKeyPage
-  }
+    component: ReturnKeyPage,
+  },
 ];
 
 @NgModule({

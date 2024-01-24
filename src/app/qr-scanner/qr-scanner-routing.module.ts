@@ -6,8 +6,8 @@ import { QrScannerPage } from './qr-scanner.page';
 const routes: Routes = [
   {
     path: '',
-    component: QrScannerPage
-  }
+    component: QrScannerPage,
+  },
 ];
 
 @NgModule({

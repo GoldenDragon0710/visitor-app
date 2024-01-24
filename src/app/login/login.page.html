@@ -5,29 +5,38 @@
 </ion-header-->
 
 <ion-content [fullscreen]="true">
-	<div class="logo-login">
-		<img src="assets/images/logo.png"> 
-	</div>
-	<div class="login-fls">
-		<h3> Welcome ! <span> <img src="assets/images/hand.svg"> </span> </h3> 
-		<p> Log in access your account </p>
-		
-		<div class="form-in">
-			 <ion-list>
-				<ion-item lines="none">
-				  <ion-input placeholder="Username"></ion-input>
-				</ion-item>
-				<ion-item lines="none">
-				  <ion-input type="password" placeholder="Password"></ion-input>
-				</ion-item>
-			</ion-list>
-			<div class="forgot-pass">
-				<span> Forgot password? </span>
-			</div>
-			<ion-button expand="block" class="btn-login" mode="md" routerLink="/tabs/home-app"> Login </ion-button>
-			<div class="signup-text" > 
-				New to Visitor? <span routerLink="/signup"> SIGN UP  </span>
-			</div>
-		</div>
-	</div>
+  <div class="logo-login">
+    <img src="assets/images/logo.png" />
+  </div>
+  <div class="login-fls">
+    <h3>
+      Welcome ! <span> <img src="assets/images/hand.svg" /> </span>
+    </h3>
+    <p>Log in access your account</p>
+
+    <div class="form-in">
+      <ion-list>
+        <ion-item lines="none">
+          <ion-input placeholder="Username"></ion-input>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-input type="password" placeholder="Password"></ion-input>
+        </ion-item>
+      </ion-list>
+      <div class="forgot-pass">
+        <span> Forgot password? </span>
+      </div>
+      <ion-button
+        expand="block"
+        class="btn-login"
+        mode="md"
+        routerLink="/tabs/home-app"
+      >
+        Login
+      </ion-button>
+      <div class="signup-text">
+        New to Visitor? <span routerLink="/signup"> SIGN UP </span>
+      </div>
+    </div>
+  </div>
 </ion-content>

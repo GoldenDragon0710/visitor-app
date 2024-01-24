@@ -9,12 +9,7 @@ import { ReturnKeyPageRoutingModule } from './return-key-routing.module';
 import { ReturnKeyPage } from './return-key.page';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    ReturnKeyPageRoutingModule
-  ],
-  declarations: [ReturnKeyPage]
+  imports: [CommonModule, FormsModule, IonicModule, ReturnKeyPageRoutingModule],
+  declarations: [ReturnKeyPage],
 })
 export class ReturnKeyPageModule {}

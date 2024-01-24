@@ -6,26 +6,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./take-photo.page.scss'],
 })
 export class TakePhotoPage implements OnInit {
+  constructor() {}
+  isDivVisible = false;
+  KeyReturn = false;
+  ScannerVisible = false;
+  ScannerBtn: boolean = true;
 
-  constructor() { }
-	 isDivVisible = false;
-	 KeyReturn = false;
-	 ScannerVisible = false;
-	 ScannerBtn: boolean = true;
+  toggleDiv() {
+    this.isDivVisible = !this.isDivVisible;
+  }
 
-	  toggleDiv() {
-		this.isDivVisible = !this.isDivVisible;
-	  }
-	  
-	  
-	  KeyButton() {
-		this.KeyReturn = !this.KeyReturn;
-	  }
-	  toggleScan() {
-		this.ScannerVisible = !this.ScannerVisible;
-		this.ScannerBtn = !this.ScannerBtn;
-	  }
-		
-		ngOnInit() {
-	  }
+  KeyButton() {
+    this.KeyReturn = !this.KeyReturn;
+  }
+  toggleScan() {
+    this.ScannerVisible = !this.ScannerVisible;
+    this.ScannerBtn = !this.ScannerBtn;
+  }
+
+  ngOnInit() {}
 }

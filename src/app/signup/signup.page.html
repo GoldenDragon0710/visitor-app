@@ -5,71 +5,97 @@
 </ion-header-->
 
 <ion-content [fullscreen]="true">
-	<div class="logo-login">
-		<img src="assets/images/logo.png"> 
-	</div>
-	<div class="login-fls">
-		<h3> Welcome ! <span> <img src="assets/images/hand.svg"> </span> </h3> 
-		<p> Sign Up access your account </p>
-		
-		<div class="form-in">
-			 <ion-list>
-				<ion-item lines="none">
-				  <ion-input placeholder="First Name*"></ion-input>
-				</ion-item>
-				<ion-item lines="none">
-				  <ion-input placeholder="Last Name*"></ion-input>
-				</ion-item>
-				<ion-item lines="none">
-					<ion-select aria-label="Fruit" interface="popover" placeholder="Company Name" mode="md">
-					  <ion-select-option value="apples">Company One</ion-select-option>
-					  <ion-select-option value="oranges">Company Two</ion-select-option>
-					  <ion-select-option value="bananas">Company Three</ion-select-option>
-					</ion-select>
-				</ion-item>
-				<ion-item lines="none">
-					<ion-select aria-label="Fruit" interface="popover" placeholder="Visitor Type" mode="md">
-					  <ion-select-option value="Customer">Customer</ion-select-option>
-					  <ion-select-option value="Employee">Employee</ion-select-option>
-					  <ion-select-option value="Employee">Employee</ion-select-option>
-					</ion-select>
-				</ion-item>
-				<ion-item lines="none">
-				  <ion-input placeholder="Mobile Number*"></ion-input>
-				</ion-item>
-				<ion-item lines="none">
-					<ion-select aria-label="Fruit" interface="popover" placeholder="State*" mode="md">
-					  <ion-select-option value="Customer">India</ion-select-option>
-					  <ion-select-option value="Employee">USA</ion-select-option>
-					  <ion-select-option value="Employee">Canada</ion-select-option>
-					  <ion-select-option value="Employee">Japan</ion-select-option>
-					  <ion-select-option value="Employee">China</ion-select-option>
-					</ion-select>
-				</ion-item>
-				<ion-item lines="none">
-				  <ion-input placeholder="WWCC"></ion-input>
-				</ion-item>
-				<ion-item lines="none">
-				  <ion-input placeholder="Email Address*"></ion-input>
-				</ion-item>
-				<ion-item lines="none">
-				  <ion-input type="password" placeholder="Password*"></ion-input>
-				</ion-item>
-				<div class="photo-upl">
-					<label for="upload-photo">
-						<ion-icon name="camera-outline"></ion-icon>
-						<p> Add Photo </p>
-						<input type="file" id="upload-photo" style="display: none;" />
-					</label>
-				</div>
-				 <ion-item lines="none">
-					<ion-toggle justify="space-between" color="success" mode="md">Location Services</ion-toggle>
-				  </ion-item>
-			</ion-list>
-			<ion-button expand="block" class="btn-login" mode="md"  routerLink="/tabs/home-app"> Sign Up </ion-button>
-			<div class="signup-text">
-				Already User? <span routerLink="/login"> LOGIN  </span>
-			</div>
-		</div>
-	</div>
+  <div class="logo-login">
+    <img src="assets/images/logo.png" />
+  </div>
+  <div class="login-fls">
+    <h3>
+      Welcome ! <span> <img src="assets/images/hand.svg" /> </span>
+    </h3>
+    <p>Sign Up access your account</p>
+
+    <div class="form-in">
+      <ion-list>
+        <ion-item lines="none">
+          <ion-input placeholder="First Name*"></ion-input>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-input placeholder="Last Name*"></ion-input>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-select
+            aria-label="Fruit"
+            interface="popover"
+            placeholder="Company Name"
+            mode="md"
+          >
+            <ion-select-option value="apples">Company One</ion-select-option>
+            <ion-select-option value="oranges">Company Two</ion-select-option>
+            <ion-select-option value="bananas">Company Three</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-select
+            aria-label="Fruit"
+            interface="popover"
+            placeholder="Visitor Type"
+            mode="md"
+          >
+            <ion-select-option value="Customer">Customer</ion-select-option>
+            <ion-select-option value="Employee">Employee</ion-select-option>
+            <ion-select-option value="Employee">Employee</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-input placeholder="Mobile Number*"></ion-input>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-select
+            aria-label="Fruit"
+            interface="popover"
+            placeholder="State*"
+            mode="md"
+          >
+            <ion-select-option value="Customer">India</ion-select-option>
+            <ion-select-option value="Employee">USA</ion-select-option>
+            <ion-select-option value="Employee">Canada</ion-select-option>
+            <ion-select-option value="Employee">Japan</ion-select-option>
+            <ion-select-option value="Employee">China</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-input placeholder="WWCC"></ion-input>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-input placeholder="Email Address*"></ion-input>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-input type="password" placeholder="Password*"></ion-input>
+        </ion-item>
+        <div class="photo-upl">
+          <label for="upload-photo">
+            <ion-icon name="camera-outline"></ion-icon>
+            <p>Add Photo</p>
+            <input type="file" id="upload-photo" style="display: none" />
+          </label>
+        </div>
+        <ion-item lines="none">
+          <ion-toggle justify="space-between" color="success" mode="md"
+            >Location Services</ion-toggle
+          >
+        </ion-item>
+      </ion-list>
+      <ion-button
+        expand="block"
+        class="btn-login"
+        mode="md"
+        routerLink="/tabs/home-app"
+      >
+        Sign Up
+      </ion-button>
+      <div class="signup-text">
+        Already User? <span routerLink="/login"> LOGIN </span>
+      </div>
+    </div>
+  </div>
 </ion-content>

@@ -6,8 +6,8 @@ import { RollCallPage } from './roll-call.page';
 const routes: Routes = [
   {
     path: '',
-    component: RollCallPage
-  }
+    component: RollCallPage,
+  },
 ];
 
 @NgModule({
