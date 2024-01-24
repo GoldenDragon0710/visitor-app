@@ -17,8 +17,7 @@ export interface UserPhoto {
   providedIn: 'root',
 })
 export class PhotoService {
-  // public photos: UserPhoto[] = [];
-  public photo!: UserPhoto;
+  public photo: UserPhoto | null = null;
   constructor() {}
 
   public async addNewToGallery() {
@@ -29,11 +28,9 @@ export class PhotoService {
       quality: 100,
     });
 
-    // this.photos.unshift({
-    //   filepath: 'soon...',
-    //   webviewPath: capturedPhoto.webPath!,
-    // });
-    this.photo.filepath = 'soon...';
-    this.photo.webviewPath = capturedPhoto.webPath!;
+    this.photo = {
+      filepath: 'soon...',
+      webviewPath: capturedPhoto.webPath!,
+    };
   }
 }

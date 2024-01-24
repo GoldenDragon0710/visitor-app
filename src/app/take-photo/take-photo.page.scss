@@ -85,6 +85,10 @@ ion-content {
   .data-dashboard {
     position: relative;
     padding: 24px 16px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     .header-dashboard {
       position: relative;
       h4 {
@@ -189,8 +193,12 @@ ion-content {
 }
 .inner-imsg {
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   img {
-    width: 100%;
+    width: 80%;
+    height: 80%;
   }
 }
 .clickd-btn {

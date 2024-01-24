@@ -70,22 +70,34 @@
           <div class="photo-div">
             <ion-row class="ion-justify-content-center">
               <ion-col size="12" size-sm="10" size-md="9">
-                <div class="inner-imsg" style="display: none">
-                  <img src="assets/images/camera.png" />
-                  <div class="clickd-btn">
-                    <a href="javascript:void(0);" class="btn-clicks">
+                <div class="inner-imsg">
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col size="12">
+                        <ion-img
+                          *ngIf="photoService.photo"
+                          [src]="photoService.photo.webviewPath"
+                        ></ion-img>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                  <div class="clickd-btn" *ngIf="!photoService.photo">
+                    <a
+                      href="javascript:void(0);"
+                      (click)="addPhotoToGallery()"
+                      class="btn-clicks"
+                    >
                       <ion-icon name="camera-outline"></ion-icon>
                     </a>
                   </div>
-                </div>
-                <div class="inner-imsg">
-                  <img src="assets/images/person.png" />
-                  <div class="clickd-btn max-w-375">
+
+                  <div class="clickd-btn max-w-375" *ngIf="photoService.photo">
                     <ion-row>
                       <ion-col size="6">
                         <ion-button
                           color="primary"
                           expand="block"
+                          (click)="submitPhoto()"
                           class="save-cli"
                           >Submit</ion-button
                         >
@@ -95,6 +107,7 @@
                           color="primary"
                           fill="outline"
                           expand="block"
+                          (click)="retakePhoto()"
                           class="save-cli"
                           >Retake</ion-button
                         >
@@ -105,6 +118,7 @@
               </ion-col>
             </ion-row>
           </div>
+          <div></div>
         </div>
       </ion-col>
     </ion-row>
