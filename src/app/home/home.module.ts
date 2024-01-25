@@ -8,8 +8,20 @@ import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
 
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { NavbarModule } from '../components/navbar/navbar.component.module';
+import { HeaderModule } from '../components/header/header.component.module';
+
 @NgModule({
-  imports: [CommonModule, FormsModule, IonicModule, HomePageRoutingModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    HomePageRoutingModule,
+    NavbarModule,
+    HeaderModule,
+  ],
   declarations: [HomePage],
+  providers: [BarcodeScanner],
 })
 export class HomePageModule {}

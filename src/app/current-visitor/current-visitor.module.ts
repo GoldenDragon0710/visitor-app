@@ -8,13 +8,20 @@ import { CurrentVisitorPageRoutingModule } from './current-visitor-routing.modul
 
 import { CurrentVisitorPage } from './current-visitor.page';
 
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { NavbarModule } from '../components/navbar/navbar.component.module';
+import { HeaderModule } from '../components/header/header.component.module';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     CurrentVisitorPageRoutingModule,
+    NavbarModule,
+    HeaderModule,
   ],
   declarations: [CurrentVisitorPage],
+  providers: [BarcodeScanner],
 })
 export class CurrentVisitorPageModule {}

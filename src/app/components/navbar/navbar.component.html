@@ -1,0 +1,105 @@
+<div class="left-panel">
+  <a
+    href="javascript:void(0);"
+    class="scan-btn"
+    (click)="scanQRCode()"
+    *ngIf="ScannerBtn"
+  >
+    SCAN Code
+  </a>
+  <!-- <div class="scan-bar" *ngIf="ScannerVisible">
+    <img src="assets/images/scan-img.png" />
+  </div> -->
+  <div class="form-left">
+    <h4>Returning Visitor</h4>
+    <ion-list>
+      <ion-item lines="none">
+        <ion-input labelPlacement="stacked" placeholder="Enter mobile">
+          <ion-icon
+            slot="start"
+            name="search-outline"
+            aria-hidden="true"
+          ></ion-icon>
+        </ion-input>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-input labelPlacement="stacked" placeholder="Enter mobile">
+          <ion-icon
+            slot="start"
+            name="search-outline"
+            aria-hidden="true"
+          ></ion-icon>
+        </ion-input>
+      </ion-item>
+    </ion-list>
+  </div>
+  <div class="bottom-fixd">
+    <ul class="foot-menus">
+      <li (click)="KeyButton()">
+        <ion-icon name="lock-open-outline"></ion-icon> Return Key
+      </li>
+      <li class="logout">
+        <ion-icon name="log-out-outline"></ion-icon> Sign Out
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="content-popup key-return" *ngIf="KeyReturn">
+  <div class="data-inner">
+    <h5>Confirm Key Returned</h5>
+    <p>Pete Stevens?</p>
+    <ion-row>
+      <ion-col size="6">
+        <ion-button
+          color="primary"
+          fill="outline"
+          expand="block"
+          class="cancle-save"
+          (click)="KeyButton()"
+          mode="md"
+          >No</ion-button
+        >
+      </ion-col>
+      <ion-col size="6">
+        <ion-button
+          color="primary"
+          expand="block"
+          class="cancle-save"
+          (click)="KeyButton()"
+          mode="md"
+          >Yes</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </div>
+</div>
+<div class="content-popup" *ngIf="isDivVisible">
+  <div class="data-inner">
+    <h5>Are you still visiting</h5>
+    <p>Pete Stevens?</p>
+    <ion-row>
+      <ion-col size="6">
+        <ion-button
+          color="primary"
+          fill="outline"
+          expand="block"
+          class="cancle-save"
+          (click)="toggleDiv()"
+          mode="md"
+          >No</ion-button
+        >
+      </ion-col>
+      <ion-col size="6">
+        <ion-button
+          color="primary"
+          expand="block"
+          class="cancle-save"
+          (click)="toggleDiv()"
+          mode="md"
+          >Yes</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </div>
+</div>
