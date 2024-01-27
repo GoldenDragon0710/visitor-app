@@ -8,7 +8,7 @@
   <div class="dashboard-tabs">
     <ion-row>
       <ion-col size="12" size-sm="5" size-md="4" size-lg="3" class="p-0">
-        <app-navbar></app-navbar>
+        <app-navbar (QRcode)="onQRcodeChange($event)"></app-navbar>
       </ion-col>
       <ion-col size="12" size-sm="7" size-md="8" size-lg="9" class="p-0">
         <div class="data-dashboard">
@@ -19,6 +19,7 @@
                 <ion-item lines="none">
                   <ion-input
                     aria-label="text"
+                    [(ngModel)]="firstName"
                     placeholder="First Name"
                   ></ion-input>
                 </ion-item>
@@ -27,13 +28,18 @@
                 <ion-item lines="none">
                   <ion-input
                     aria-label="text"
+                    [(ngModel)]="lastName"
                     placeholder="Last Name"
                   ></ion-input>
                 </ion-item>
               </ion-col>
               <ion-col size="12" size-sm="12" size-md="6">
                 <ion-item lines="none">
-                  <ion-select interface="popover" placeholder="Visitor Type">
+                  <ion-select
+                    interface="popover"
+                    [(ngModel)]="visitorType"
+                    placeholder="Visitor Type"
+                  >
                     <ion-select-option value="apples">Apples</ion-select-option>
                     <ion-select-option value="oranges"
                       >Oranges</ion-select-option
@@ -46,7 +52,11 @@
               </ion-col>
               <ion-col size="12" size-sm="12" size-md="6">
                 <ion-item lines="none">
-                  <ion-select interface="popover" placeholder="Company Name">
+                  <ion-select
+                    interface="popover"
+                    [(ngModel)]="company"
+                    placeholder="Company Name"
+                  >
                     <ion-select-option value="apples">Apples</ion-select-option>
                     <ion-select-option value="oranges"
                       >Oranges</ion-select-option
@@ -61,13 +71,18 @@
                 <ion-item lines="none">
                   <ion-input
                     aria-label="text"
+                    [(ngModel)]="mobileNum"
                     placeholder="Mobile Number"
                   ></ion-input>
                 </ion-item>
               </ion-col>
               <ion-col size="12" size-sm="12" size-md="6">
                 <ion-item lines="none">
-                  <ion-select interface="popover" placeholder="Person Visiting">
+                  <ion-select
+                    interface="popover"
+                    [(ngModel)]="personVisiting"
+                    placeholder="Person Visiting"
+                  >
                     <ion-select-option value="apples">Apples</ion-select-option>
                     <ion-select-option value="oranges"
                       >Oranges</ion-select-option
@@ -82,11 +97,9 @@
                 <h5 class="radio-title">
                   No Covid or Sickness in last 14 Days
                 </h5>
-                <ion-radio-group value="strawberries" mode="md">
-                  <ion-radio value="grapes" labelPlacement="end">Yes</ion-radio>
-                  <ion-radio value="strawberries" labelPlacement="end"
-                    >No</ion-radio
-                  >
+                <ion-radio-group value="true" [(ngModel)]="isSick" mode="md">
+                  <ion-radio value="true" labelPlacement="end">Yes</ion-radio>
+                  <ion-radio value="false" labelPlacement="end">No</ion-radio>
                 </ion-radio-group>
               </ion-col>
             </ion-row>

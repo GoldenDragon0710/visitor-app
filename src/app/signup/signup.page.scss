@@ -42,7 +42,7 @@ ion-content {
     background: #f6f6f6;
     --background: #f6f6f6;
     --border-radius: 6px;
-    margin-bottom: 20px;
+    margin-top: 20px;
     ion-input,
     ion-select {
       font-size: 16px;
@@ -93,6 +93,7 @@ ion-button.btn-login {
   }
 }
 .photo-upl {
+  margin-top: 20px;
   label {
     border-radius: 6px;
     border: 1px dashed #a3a3a3;
@@ -111,4 +112,10 @@ ion-button.btn-login {
       text-transform: capitalize;
     }
   }
+}
+.required-text {
+  font-size: 12px;
+  color: red;
+  margin-bottom: 20px;
+  margin-left: 16px;
 }

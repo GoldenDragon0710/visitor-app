@@ -13,30 +13,47 @@
       Welcome ! <span> <img src="assets/images/hand.svg" /> </span>
     </h3>
     <p>Log in access your account</p>
-
-    <div class="form-in">
-      <ion-list>
-        <ion-item lines="none">
-          <ion-input placeholder="Username"></ion-input>
-        </ion-item>
-        <ion-item lines="none">
-          <ion-input type="password" placeholder="Password"></ion-input>
-        </ion-item>
-      </ion-list>
-      <div class="forgot-pass">
-        <span> Forgot password? </span>
+    <form [formGroup]="loginForm">
+      <div class="form-in">
+        <ion-list>
+          <ion-item lines="none">
+            <ion-input formControlName="email" placeholder="Email"></ion-input>
+          </ion-item>
+          <div
+            *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched"
+            class="required-text"
+          >
+            Email is required.
+          </div>
+          <ion-item lines="none">
+            <ion-input
+              type="password"
+              formControlName="password"
+              placeholder="Password"
+            ></ion-input>
+          </ion-item>
+          <div
+            *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched"
+            class="required-text"
+          >
+            Password is required.
+          </div>
+        </ion-list>
+        <div class="forgot-pass" routerLink="/forgot-password">
+          <span> Forgot password? </span>
+        </div>
+        <ion-button
+          expand="block"
+          class="btn-login"
+          mode="md"
+          (click)="submit()"
+        >
+          Login
+        </ion-button>
+        <div class="signup-text">
+          New to Visitor? <span routerLink="/signup"> SIGN UP </span>
+        </div>
       </div>
-      <ion-button
-        expand="block"
-        class="btn-login"
-        mode="md"
-        routerLink="/tabs/home-app"
-      >
-        Login
-      </ion-button>
-      <div class="signup-text">
-        New to Visitor? <span routerLink="/signup"> SIGN UP </span>
-      </div>
-    </div>
+    </form>
   </div>
 </ion-content>

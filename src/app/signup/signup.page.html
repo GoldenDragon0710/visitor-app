@@ -14,88 +14,165 @@
     </h3>
     <p>Sign Up access your account</p>
 
-    <div class="form-in">
-      <ion-list>
-        <ion-item lines="none">
-          <ion-input placeholder="First Name*"></ion-input>
-        </ion-item>
-        <ion-item lines="none">
-          <ion-input placeholder="Last Name*"></ion-input>
-        </ion-item>
-        <ion-item lines="none">
-          <ion-select
-            aria-label="Fruit"
-            interface="popover"
-            placeholder="Company Name"
-            mode="md"
+    <form [formGroup]="signUpForm">
+      <div class="form-in">
+        <ion-list>
+          <ion-item lines="none">
+            <ion-input
+              formControlName="firstName"
+              placeholder="First Name"
+            ></ion-input>
+          </ion-item>
+          <div
+            *ngIf="signUpForm.controls['firstName'].invalid && signUpForm.controls['firstName'].touched"
+            class="required-text"
           >
-            <ion-select-option value="apples">Company One</ion-select-option>
-            <ion-select-option value="oranges">Company Two</ion-select-option>
-            <ion-select-option value="bananas">Company Three</ion-select-option>
-          </ion-select>
-        </ion-item>
-        <ion-item lines="none">
-          <ion-select
-            aria-label="Fruit"
-            interface="popover"
-            placeholder="Visitor Type"
-            mode="md"
+            First Name is required.
+          </div>
+          <ion-item lines="none">
+            <ion-input
+              formControlName="lastName"
+              placeholder="Last Name"
+            ></ion-input>
+          </ion-item>
+          <div
+            *ngIf="signUpForm.controls['lastName'].invalid && signUpForm.controls['lastName'].touched"
+            class="required-text"
           >
-            <ion-select-option value="Customer">Customer</ion-select-option>
-            <ion-select-option value="Employee">Employee</ion-select-option>
-            <ion-select-option value="Employee">Employee</ion-select-option>
-          </ion-select>
-        </ion-item>
-        <ion-item lines="none">
-          <ion-input placeholder="Mobile Number*"></ion-input>
-        </ion-item>
-        <ion-item lines="none">
-          <ion-select
-            aria-label="Fruit"
-            interface="popover"
-            placeholder="State*"
-            mode="md"
+            Last Name is required.
+          </div>
+          <ion-item lines="none">
+            <ion-select
+              aria-label="Fruit"
+              interface="popover"
+              formControlName="company"
+              placeholder="Company Name"
+              mode="md"
+            >
+              <ion-select-option value="apples">Company One</ion-select-option>
+              <ion-select-option value="oranges">Company Two</ion-select-option>
+              <ion-select-option value="bananas"
+                >Company Three</ion-select-option
+              >
+            </ion-select>
+          </ion-item>
+          <div
+            *ngIf="signUpForm.controls['company'].invalid && signUpForm.controls['company'].touched"
+            class="required-text"
           >
-            <ion-select-option value="Customer">India</ion-select-option>
-            <ion-select-option value="Employee">USA</ion-select-option>
-            <ion-select-option value="Employee">Canada</ion-select-option>
-            <ion-select-option value="Employee">Japan</ion-select-option>
-            <ion-select-option value="Employee">China</ion-select-option>
-          </ion-select>
-        </ion-item>
-        <ion-item lines="none">
-          <ion-input placeholder="WWCC"></ion-input>
-        </ion-item>
-        <ion-item lines="none">
-          <ion-input placeholder="Email Address*"></ion-input>
-        </ion-item>
-        <ion-item lines="none">
-          <ion-input type="password" placeholder="Password*"></ion-input>
-        </ion-item>
-        <div class="photo-upl">
-          <label for="upload-photo">
-            <ion-icon name="camera-outline"></ion-icon>
-            <p>Add Photo</p>
-            <input type="file" id="upload-photo" style="display: none" />
-          </label>
+            Company is required.
+          </div>
+          <ion-item lines="none">
+            <ion-select
+              aria-label="Fruit"
+              interface="popover"
+              formControlName="visitorType"
+              placeholder="Visitor Type"
+              mode="md"
+            >
+              <ion-select-option value="Customer">Customer</ion-select-option>
+              <ion-select-option value="Employee">Employee</ion-select-option>
+              <ion-select-option value="Employee">Employee</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <div
+            *ngIf="signUpForm.controls['visitorType'].invalid && signUpForm.controls['visitorType'].touched"
+            class="required-text"
+          >
+            Visitor Type is required.
+          </div>
+          <ion-item lines="none">
+            <ion-input
+              formControlName="mobileNum"
+              placeholder="Mobile Number"
+            ></ion-input>
+          </ion-item>
+          <div
+            *ngIf="signUpForm.controls['mobileNum'].invalid && signUpForm.controls['mobileNum'].touched"
+            class="required-text"
+          >
+            Mobile Number is required.
+          </div>
+          <ion-item lines="none">
+            <ion-select
+              aria-label="Fruit"
+              interface="popover"
+              placeholder="State"
+              formControlName="state"
+              mode="md"
+            >
+              <ion-select-option value="Customer">India</ion-select-option>
+              <ion-select-option value="Employee">USA</ion-select-option>
+              <ion-select-option value="Employee">Canada</ion-select-option>
+              <ion-select-option value="Employee">Japan</ion-select-option>
+              <ion-select-option value="Employee">China</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <div
+            *ngIf="signUpForm.controls['state'].invalid && signUpForm.controls['state'].touched"
+            class="required-text"
+          >
+            State is required.
+          </div>
+          <ion-item lines="none">
+            <ion-input formControlName="wwcc" placeholder="WWCC"></ion-input>
+          </ion-item>
+          <div
+            *ngIf="signUpForm.controls['wwcc'].invalid && signUpForm.controls['wwcc'].touched"
+            class="required-text"
+          >
+            WWCC is required.
+          </div>
+          <ion-item lines="none">
+            <ion-input
+              formControlName="email"
+              placeholder="Email Address"
+            ></ion-input>
+          </ion-item>
+          <div
+            *ngIf="signUpForm.controls['email'].invalid && signUpForm.controls['email'].touched"
+            class="required-text"
+          >
+            Email is required.
+          </div>
+          <ion-item lines="none">
+            <ion-input
+              type="password"
+              formControlName="password"
+              placeholder="Password"
+            ></ion-input>
+          </ion-item>
+          <div
+            *ngIf="signUpForm.controls['password'].invalid && signUpForm.controls['password'].touched"
+            class="required-text"
+          >
+            Password is required.
+          </div>
+          <div class="photo-upl">
+            <label for="upload-photo">
+              <ion-icon name="camera-outline"></ion-icon>
+              <p>Add Photo</p>
+              <input type="file" id="upload-photo" style="display: none" />
+            </label>
+          </div>
+          <ion-item lines="none">
+            <ion-toggle justify="space-between" color="success" mode="md"
+              >Location Services</ion-toggle
+            >
+          </ion-item>
+        </ion-list>
+        <ion-button
+          expand="block"
+          class="btn-login"
+          mode="md"
+          (click)="submit()"
+        >
+          Sign Up
+        </ion-button>
+        <div class="signup-text">
+          Already User? <span routerLink="/login"> LOGIN </span>
         </div>
-        <ion-item lines="none">
-          <ion-toggle justify="space-between" color="success" mode="md"
-            >Location Services</ion-toggle
-          >
-        </ion-item>
-      </ion-list>
-      <ion-button
-        expand="block"
-        class="btn-login"
-        mode="md"
-        routerLink="/tabs/home-app"
-      >
-        Sign Up
-      </ion-button>
-      <div class="signup-text">
-        Already User? <span routerLink="/login"> LOGIN </span>
       </div>
-    </div>
+    </form>
   </div>
 </ion-content>

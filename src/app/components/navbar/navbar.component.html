@@ -14,7 +14,11 @@
     <h4>Returning Visitor</h4>
     <ion-list>
       <ion-item lines="none">
-        <ion-input labelPlacement="stacked" placeholder="Enter mobile">
+        <ion-input
+          labelPlacement="stacked"
+          [(ngModel)]="search_mobile"
+          placeholder="Enter mobile"
+        >
           <ion-icon
             slot="start"
             name="search-outline"
@@ -23,7 +27,11 @@
         </ion-input>
       </ion-item>
       <ion-item lines="none">
-        <ion-input labelPlacement="stacked" placeholder="Enter mobile">
+        <ion-input
+          labelPlacement="stacked"
+          [(ngModel)]="search_name"
+          placeholder="Enter name"
+        >
           <ion-icon
             slot="start"
             name="search-outline"
@@ -38,7 +46,7 @@
       <li (click)="KeyButton()">
         <ion-icon name="lock-open-outline"></ion-icon> Return Key
       </li>
-      <li class="logout">
+      <li class="logout" (click)="LogOut()">
         <ion-icon name="log-out-outline"></ion-icon> Sign Out
       </li>
     </ul>
@@ -66,7 +74,7 @@
           color="primary"
           expand="block"
           class="cancle-save"
-          (click)="KeyButton()"
+          (click)="returnKey()"
           mode="md"
           >Yes</ion-button
         >
