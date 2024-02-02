@@ -141,7 +141,7 @@ export class NavbarComponent implements OnInit {
         this.navbarloading.emit(true);
         this.http
           .post<ReturnKeyResponse>(
-            'http://localhost/index.php/history/getUserInfo',
+            'http://localhost/index.php/history/getUserbyKeyID',
             data
           )
           .subscribe(

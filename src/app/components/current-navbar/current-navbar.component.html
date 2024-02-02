@@ -1,0 +1,100 @@
+<div class="left-panel">
+  <div class="form-left">
+    <ul class="menu-lists">
+      <li class="active" (click)="handleHomeTab()">
+        <span class="icon-me">
+          <ion-icon name="home-outline"></ion-icon>
+        </span>
+        Home
+      </li>
+      <li (click)="handleRollCall()">
+        <span class="icon-me">
+          <ion-icon name="hand-right-outline"></ion-icon>
+        </span>
+        Roll Call
+      </li>
+      <li (click)="handleReturnKey()">
+        <span class="icon-me">
+          <ion-icon name="lock-open-outline"></ion-icon>
+        </span>
+        Return Key
+      </li>
+      <li (click)="handleEvacuate()">
+        <span class="icon-me">
+          <ion-icon name="warning-outline"></ion-icon>
+        </span>
+        Evacuate
+      </li>
+    </ul>
+  </div>
+  <div class="bottom-fixd">
+    <ul class="foot-menus">
+      <li class="logout" (click)="scanCode()" *ngIf="isScanCode">
+        <ion-icon name="search-outline"></ion-icon> SCAN Code
+      </li>
+      <li class="logout" (click)="gotoHome()">
+        <ion-icon name="arrow-back-outline"></ion-icon> Back
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="content-popup key-return" *ngIf="isKeyReturn">
+  <div class="data-inner">
+    <h5>Confirm Key Returned</h5>
+    <p>Pete Stevens?</p>
+    <ion-row>
+      <ion-col size="6">
+        <ion-button
+          color="primary"
+          fill="outline"
+          expand="block"
+          class="cancle-save"
+          (click)="closeReturnModal()"
+          mode="md"
+          >No</ion-button
+        >
+      </ion-col>
+      <ion-col size="6">
+        <ion-button
+          color="primary"
+          expand="block"
+          class="cancle-save"
+          (click)="scanCode()"
+          mode="md"
+          >Yes</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </div>
+</div>
+
+<div class="content-popup" *ngIf="isEvacuateShowModal">
+  <div class="data-inner">
+    <h5>Confirm Evacuation</h5>
+    <p>Send Alert to All Visitors</p>
+    <ion-row>
+      <ion-col size="6">
+        <ion-button
+          color="primary"
+          fill="outline"
+          expand="block"
+          class="cancle-save"
+          (click)="cancelEvacuation()"
+          mode="md"
+          >No</ion-button
+        >
+      </ion-col>
+      <ion-col size="6">
+        <ion-button
+          color="primary"
+          expand="block"
+          class="cancle-save"
+          (click)="okEvacuation()"
+          mode="md"
+          >Yes</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </div>
+</div>

@@ -2,56 +2,6 @@ ion-content {
   .p-0 {
     padding: 0px;
   }
-  .left-panel {
-    position: relative;
-    padding: 24px 16px;
-    min-height: 100vh;
-    border-right: 1px solid #eee;
-    background: #fdfdfd;
-    a.scan-btn {
-      color: #4b69ff;
-      font-size: 16px;
-      font-weight: 500;
-      line-height: normal;
-      text-decoration-line: underline;
-      text-transform: capitalize;
-      text-align: center;
-      display: block;
-    }
-    .form-left {
-      h4 {
-        color: #121212;
-        font-size: 16px;
-        font-weight: 500;
-        line-height: normal;
-        text-transform: capitalize;
-        text-align: center;
-        margin-top: 24px;
-        margin-bottom: 16px;
-      }
-      ion-item {
-        --padding-start: 0px;
-        --padding-end: 0px;
-        --inner-padding-end: 0;
-        ion-input {
-          border-radius: 6px;
-          --border-radius: 6px;
-          background: var(--Foundation-Gray-gray-100, #f6f6f6);
-          width: 100%;
-          min-height: 40px;
-          padding: 11px 12px;
-          --padding-start: 16px;
-          height: 40px;
-          margin-bottom: 14px;
-          flex: 0 0 100%;
-          font-size: 14px;
-          font-style: normal;
-          font-weight: 400;
-          line-height: normal;
-        }
-      }
-    }
-  }
   .bottom-fixd {
     position: absolute;
     bottom: 0;
@@ -129,6 +79,7 @@ ion-content {
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -178,12 +129,6 @@ ion-content {
       height: 40px;
       --height: 40px;
     }
-  }
-}
-.scan-bar {
-  display: block;
-  img {
-    width: 100%;
   }
 }
 .table-main {
@@ -243,26 +188,24 @@ table.table.table-design {
     }
   }
 }
+.loading-spinner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.361);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-ul.menu-lists {
-  margin: 0px;
-  padding: 0px;
-  list-style: none;
-  li {
-    color: #929292;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    text-transform: capitalize;
-    padding: 10px;
-    span.icon-me {
-      font-size: 20px;
-      vertical-align: middle;
-      margin-right: 2px;
-    }
-    &.active {
-      color: #4b69ff;
-    }
+  ion-spinner {
+    color: #363636;
+    width: 100px;
+    height: 100px;
   }
+}
+.alert-class {
+  background-color: #00000066 !important;
+  color: white !important;
 }

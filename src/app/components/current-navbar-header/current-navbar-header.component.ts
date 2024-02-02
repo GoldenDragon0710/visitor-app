@@ -1,20 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
+  selector: 'app-current-navbar-header',
+  templateUrl: './current-navbar-header.component.html',
+  styleUrls: ['./current-navbar-header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
-  constructor(private router: Router, private userService: UserService) {}
+export class CurrentNavbarHeaderComponent implements OnInit {
+  constructor(private userService: UserService) {}
   currentDateTime: string = '';
   school_name: string = '';
-
-  toggleDiv() {
-    this.router.navigate(['/dashboard']);
-  }
 
   updateDateTime() {
     const currentDate = new Date();
