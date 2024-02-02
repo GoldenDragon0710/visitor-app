@@ -11,6 +11,7 @@ import { HomePage } from './home.page';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { NavbarModule } from '../components/navbar/navbar.component.module';
 import { HeaderModule } from '../components/header/header.component.module';
+import { CaptureModule } from '../components/capture/capture.component.module';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { HeaderModule } from '../components/header/header.component.module';
     HomePageRoutingModule,
     NavbarModule,
     HeaderModule,
+    CaptureModule,
   ],
   declarations: [HomePage],
   providers: [BarcodeScanner],

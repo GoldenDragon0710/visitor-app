@@ -19,115 +19,77 @@
         <ion-list>
           <ion-item lines="none">
             <ion-input
-              formControlName="firstName"
+              formControlName="first_name"
               placeholder="First Name"
             ></ion-input>
           </ion-item>
           <div
-            *ngIf="signUpForm.controls['firstName'].invalid && signUpForm.controls['firstName'].touched"
+            *ngIf="signUpForm.controls['first_name'].invalid && signUpForm.controls['first_name'].touched"
             class="required-text"
           >
             First Name is required.
           </div>
           <ion-item lines="none">
             <ion-input
-              formControlName="lastName"
+              formControlName="last_name"
               placeholder="Last Name"
             ></ion-input>
           </ion-item>
           <div
-            *ngIf="signUpForm.controls['lastName'].invalid && signUpForm.controls['lastName'].touched"
+            *ngIf="signUpForm.controls['last_name'].invalid && signUpForm.controls['last_name'].touched"
             class="required-text"
           >
             Last Name is required.
           </div>
           <ion-item lines="none">
+            <ion-input
+              formControlName="school_name"
+              placeholder="School Name"
+            ></ion-input>
+          </ion-item>
+          <div
+            *ngIf="signUpForm.controls['school_name'].invalid && signUpForm.controls['school_name'].touched"
+            class="required-text"
+          >
+            School Name is required.
+          </div>
+          <ion-item lines="none">
             <ion-select
-              aria-label="Fruit"
+              aria-label="Role"
               interface="popover"
-              formControlName="company"
-              placeholder="Company Name"
+              formControlName="role"
+              placeholder="Role Type"
               mode="md"
             >
-              <ion-select-option value="apples">Company One</ion-select-option>
-              <ion-select-option value="oranges">Company Two</ion-select-option>
-              <ion-select-option value="bananas"
-                >Company Three</ion-select-option
+              <ion-select-option value="Principal">Principal</ion-select-option>
+              <ion-select-option value="Business Manager"
+                >Business Manager</ion-select-option
+              >
+              <ion-select-option value="Grounsperson"
+                >Grounsperson</ion-select-option
               >
             </ion-select>
           </ion-item>
           <div
-            *ngIf="signUpForm.controls['company'].invalid && signUpForm.controls['company'].touched"
+            *ngIf="signUpForm.controls['role'].invalid && signUpForm.controls['role'].touched"
             class="required-text"
           >
-            Company is required.
-          </div>
-          <ion-item lines="none">
-            <ion-select
-              aria-label="Fruit"
-              interface="popover"
-              formControlName="visitorType"
-              placeholder="Visitor Type"
-              mode="md"
-            >
-              <ion-select-option value="Customer">Customer</ion-select-option>
-              <ion-select-option value="Employee">Employee</ion-select-option>
-              <ion-select-option value="Employee">Employee</ion-select-option>
-            </ion-select>
-          </ion-item>
-          <div
-            *ngIf="signUpForm.controls['visitorType'].invalid && signUpForm.controls['visitorType'].touched"
-            class="required-text"
-          >
-            Visitor Type is required.
+            Role Type is required.
           </div>
           <ion-item lines="none">
             <ion-input
-              formControlName="mobileNum"
+              formControlName="mobile_number"
               placeholder="Mobile Number"
             ></ion-input>
           </ion-item>
           <div
-            *ngIf="signUpForm.controls['mobileNum'].invalid && signUpForm.controls['mobileNum'].touched"
+            *ngIf="signUpForm.controls['mobile_number'].invalid && signUpForm.controls['mobile_number'].touched"
             class="required-text"
           >
             Mobile Number is required.
           </div>
           <ion-item lines="none">
-            <ion-select
-              aria-label="Fruit"
-              interface="popover"
-              placeholder="State"
-              formControlName="state"
-              mode="md"
-            >
-              <ion-select-option value="Customer">India</ion-select-option>
-              <ion-select-option value="Employee">USA</ion-select-option>
-              <ion-select-option value="Employee">Canada</ion-select-option>
-              <ion-select-option value="Employee">Japan</ion-select-option>
-              <ion-select-option value="Employee">China</ion-select-option>
-            </ion-select>
-          </ion-item>
-          <div
-            *ngIf="signUpForm.controls['state'].invalid && signUpForm.controls['state'].touched"
-            class="required-text"
-          >
-            State is required.
-          </div>
-          <ion-item lines="none">
-            <ion-input formControlName="wwcc" placeholder="WWCC"></ion-input>
-          </ion-item>
-          <div
-            *ngIf="signUpForm.controls['wwcc'].invalid && signUpForm.controls['wwcc'].touched"
-            class="required-text"
-          >
-            WWCC is required.
-          </div>
-          <ion-item lines="none">
-            <ion-input
-              formControlName="email"
-              placeholder="Email Address"
-            ></ion-input>
+            <ion-input formControlName="email" placeholder="Email"></ion-input>
           </ion-item>
           <div
             *ngIf="signUpForm.controls['email'].invalid && signUpForm.controls['email'].touched"
@@ -148,18 +110,6 @@
           >
             Password is required.
           </div>
-          <div class="photo-upl">
-            <label for="upload-photo">
-              <ion-icon name="camera-outline"></ion-icon>
-              <p>Add Photo</p>
-              <input type="file" id="upload-photo" style="display: none" />
-            </label>
-          </div>
-          <ion-item lines="none">
-            <ion-toggle justify="space-between" color="success" mode="md"
-              >Location Services</ion-toggle
-            >
-          </ion-item>
         </ion-list>
         <ion-button
           expand="block"
@@ -174,5 +124,8 @@
         </div>
       </div>
     </form>
+  </div>
+  <div class="loading-spinner" *ngIf="loading">
+    <ion-spinner></ion-spinner>
   </div>
 </ion-content>

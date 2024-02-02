@@ -3,11 +3,6 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
-    loadChildren: () =>
-      import('./tabs/tabs.module').then((m) => m.TabsPageModule),
-  },
-  {
     path: 'home',
     loadChildren: () =>
       import('./home/home.module').then((m) => m.HomePageModule),
@@ -17,13 +12,6 @@ const routes: Routes = [
     loadChildren: () =>
       import('./current-visitor/current-visitor.module').then(
         (m) => m.CurrentVisitorPageModule
-      ),
-  },
-  {
-    path: 'take-photo',
-    loadChildren: () =>
-      import('./take-photo/take-photo.module').then(
-        (m) => m.TakePhotoPageModule
       ),
   },
   {
@@ -64,23 +52,6 @@ const routes: Routes = [
     path: 'signup',
     loadChildren: () =>
       import('./signup/signup.module').then((m) => m.SignupPageModule),
-  },
-  {
-    path: 'home-app',
-    loadChildren: () =>
-      import('./home-app/home-app.module').then((m) => m.HomeAppPageModule),
-  },
-  {
-    path: 'history',
-    loadChildren: () =>
-      import('./history/history.module').then((m) => m.HistoryPageModule),
-  },
-  {
-    path: 'qr-scanner',
-    loadChildren: () =>
-      import('./qr-scanner/qr-scanner.module').then(
-        (m) => m.QrScannerPageModule
-      ),
   },
 ];
 @NgModule({

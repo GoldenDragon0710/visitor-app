@@ -8,7 +8,14 @@
   <div class="dashboard-tabs">
     <ion-row>
       <ion-col size="12" size-sm="5" size-md="4" size-lg="3" class="p-0">
-        <app-navbar (QRcode)="onQRcodeChange($event)"></app-navbar>
+        <app-navbar
+          (navbarloading)="handleLoading($event)"
+          (input_fname)="onfnameChange($event)"
+          (input_lname)="onlnameChange($event)"
+          (input_visitor)="onVisitorChange($event)"
+          (input_mobile)="onMobileChange($event)"
+          (input_company)="onCompanyChange($event)"
+        ></app-navbar>
       </ion-col>
       <ion-col size="12" size-sm="7" size-md="8" size-lg="9" class="p-0">
         <div class="data-dashboard">
@@ -19,7 +26,7 @@
                 <ion-item lines="none">
                   <ion-input
                     aria-label="text"
-                    [(ngModel)]="firstName"
+                    [(ngModel)]="first_name"
                     placeholder="First Name"
                   ></ion-input>
                 </ion-item>
@@ -28,7 +35,7 @@
                 <ion-item lines="none">
                   <ion-input
                     aria-label="text"
-                    [(ngModel)]="lastName"
+                    [(ngModel)]="last_name"
                     placeholder="Last Name"
                   ></ion-input>
                 </ion-item>
@@ -37,15 +44,17 @@
                 <ion-item lines="none">
                   <ion-select
                     interface="popover"
-                    [(ngModel)]="visitorType"
+                    [(ngModel)]="visitor_type"
                     placeholder="Visitor Type"
                   >
-                    <ion-select-option value="apples">Apples</ion-select-option>
-                    <ion-select-option value="oranges"
-                      >Oranges</ion-select-option
+                    <ion-select-option value="visitor_A"
+                      >Visitor A</ion-select-option
                     >
-                    <ion-select-option value="bananas"
-                      >Bananas</ion-select-option
+                    <ion-select-option value="visitor_B"
+                      >Visitor B</ion-select-option
+                    >
+                    <ion-select-option value="visitor_C"
+                      >Visitor C</ion-select-option
                     >
                   </ion-select>
                 </ion-item>
@@ -54,15 +63,17 @@
                 <ion-item lines="none">
                   <ion-select
                     interface="popover"
-                    [(ngModel)]="company"
+                    [(ngModel)]="company_name"
                     placeholder="Company Name"
                   >
-                    <ion-select-option value="apples">Apples</ion-select-option>
-                    <ion-select-option value="oranges"
-                      >Oranges</ion-select-option
+                    <ion-select-option value="company_A"
+                      >Company A</ion-select-option
                     >
-                    <ion-select-option value="bananas"
-                      >Bananas</ion-select-option
+                    <ion-select-option value="company_B"
+                      >Company B</ion-select-option
+                    >
+                    <ion-select-option value="company_C"
+                      >Company C</ion-select-option
                     >
                   </ion-select>
                 </ion-item>
@@ -71,7 +82,7 @@
                 <ion-item lines="none">
                   <ion-input
                     aria-label="text"
-                    [(ngModel)]="mobileNum"
+                    [(ngModel)]="mobile_number"
                     placeholder="Mobile Number"
                   ></ion-input>
                 </ion-item>
@@ -80,15 +91,17 @@
                 <ion-item lines="none">
                   <ion-select
                     interface="popover"
-                    [(ngModel)]="personVisiting"
+                    [(ngModel)]="person_visiting"
                     placeholder="Person Visiting"
                   >
-                    <ion-select-option value="apples">Apples</ion-select-option>
-                    <ion-select-option value="oranges"
-                      >Oranges</ion-select-option
+                    <ion-select-option value="person_A"
+                      >Person A</ion-select-option
                     >
-                    <ion-select-option value="bananas"
-                      >Bananas</ion-select-option
+                    <ion-select-option value="person_B"
+                      >Person B</ion-select-option
+                    >
+                    <ion-select-option value="person_C"
+                      >Person C</ion-select-option
                     >
                   </ion-select>
                 </ion-item>
@@ -105,9 +118,15 @@
             </ion-row>
             <ion-row>
               <ion-col size="12" size-sm="12" size-md="6">
-                <h5 class="radio-title">Photo</h5>
+                <div class="button-label">
+                  <h5 class="radio-title">Photo</h5>
+                  <ion-icon
+                    name="checkmark-outline"
+                    *ngIf="isPhotoCaptured"
+                  ></ion-icon>
+                </div>
                 <div class="upload-pho">
-                  <a href="/take-photo">
+                  <a href="javascript:void(0);" (click)="showCapture()">
                     <label for="upload-click">
                       <ion-icon name="camera-outline"></ion-icon>
                       <h5>Click to Upload</h5>
@@ -116,12 +135,20 @@
                 </div>
               </ion-col>
               <ion-col size="12" size-sm="12" size-md="6">
-                <h5 class="radio-title">Loan Key</h5>
+                <div class="button-label">
+                  <h5 class="radio-title">Loan Key</h5>
+                  <ion-icon
+                    name="checkmark-outline"
+                    *ngIf="isKeyChecked"
+                  ></ion-icon>
+                </div>
                 <div class="upload-pho">
-                  <label for="scan-id">
-                    <ion-icon name="lock-closed-outline"></ion-icon>
-                    <h5>SCAN Key ID</h5>
-                  </label>
+                  <a href="javascript:void(0);" (click)="ScanKeyID()">
+                    <label for="scan-id">
+                      <ion-icon name="lock-closed-outline"></ion-icon>
+                      <h5>SCAN Key ID</h5>
+                    </label>
+                  </a>
                 </div>
               </ion-col>
             </ion-row>
@@ -142,4 +169,8 @@
       </ion-col>
     </ion-row>
   </div>
+  <div class="loading-spinner" *ngIf="loading">
+    <ion-spinner></ion-spinner>
+  </div>
+  <app-capture *ngIf="isCapture" (isShow)="showCapture()"></app-capture>
 </ion-content>

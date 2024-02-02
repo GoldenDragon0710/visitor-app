@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { UserService } from '../services/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastController } from '@ionic/angular';
 
 interface SignUpResponse {
   status: boolean;
-  data?: object;
   message?: string;
 }
 
@@ -15,75 +14,97 @@ interface SignUpResponse {
   templateUrl: './signup.page.html',
   styleUrls: ['./signup.page.scss'],
 })
-export class SignupPage implements OnInit {
-  input_firstName: string = '';
-  input_lastName: string = '';
-  input_company: string = '';
-  input_visitorType: string = '';
-  input_mobileNum: string = '';
-  input_state: string = '';
-  input_wwcc: string = '';
-  input_email: string = '';
-  input_password: string = '';
+export class SignUpPage implements OnInit {
+  first_name: string = '';
+  last_name: string = '';
+  school_name: string = '';
+  role: string = '';
+  mobile_number: string = '';
+  email: string = '';
+  password: string = '';
   signUpForm: FormGroup;
+  loading: boolean = false;
 
   constructor(
     private http: HttpClient,
     private router: Router,
-    private userService: UserService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    public toastController: ToastController
   ) {
     this.signUpForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      company: ['', Validators.required],
-      visitorType: ['', Validators.required],
-      mobileNum: ['', Validators.required],
-      state: ['', Validators.required],
-      wwcc: ['', Validators.required],
+      first_name: ['', Validators.required],
+      last_name: ['', Validators.required],
+      school_name: ['', Validators.required],
+      role: ['', Validators.required],
+      mobile_number: ['', Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required],
     });
   }
 
-  submit() {
+  async submit() {
     if (!this.signUpForm.valid) {
+      const toast = await this.toastController.create({
+        message: 'Please enter correctly',
+        position: 'top',
+        duration: 2000,
+        cssClass: 'alert-class',
+      });
+      toast.present();
       return;
     }
-    this.input_firstName = this.signUpForm.controls['firstName'].value;
-    this.input_lastName = this.signUpForm.controls['lastName'].value;
-    this.input_company = this.signUpForm.controls['company'].value;
-    this.input_visitorType = this.signUpForm.controls['visitorType'].value;
-    this.input_mobileNum = this.signUpForm.controls['mobileNum'].value;
-    this.input_state = this.signUpForm.controls['state'].value;
-    this.input_wwcc = this.signUpForm.controls['wwcc'].value;
-    this.input_email = this.signUpForm.controls['email'].value;
-    this.input_password = this.signUpForm.controls['password'].value;
+    this.first_name = this.signUpForm.controls['first_name'].value;
+    this.last_name = this.signUpForm.controls['last_name'].value;
+    this.school_name = this.signUpForm.controls['school_name'].value;
+    this.role = this.signUpForm.controls['role'].value;
+    this.mobile_number = this.signUpForm.controls['mobile_number'].value;
+    this.email = this.signUpForm.controls['email'].value;
+    this.password = this.signUpForm.controls['password'].value;
 
     const data = {
-      firstName: this.input_firstName,
-      lastName: this.input_lastName,
-      company: this.input_company,
-      visitorType: this.input_visitorType,
-      mobileNum: this.input_mobileNum,
-      state: this.input_state,
-      wwcc: this.input_wwcc,
-      email: this.input_email,
-      password: this.input_password,
+      first_name: this.first_name,
+      last_name: this.last_name,
+      school_name: this.school_name,
+      role: this.role,
+      mobile_number: this.mobile_number,
+      email: this.email,
+      password: this.password,
     };
+    this.loading = true;
     this.http
-      .post<SignUpResponse>('http://localhost/index.php/users/register', data)
+      .post<SignUpResponse>('http://localhost/index.php/staff/register', data)
       .subscribe(
-        (response: SignUpResponse) => {
+        async (response: SignUpResponse) => {
           if (response.status) {
-            this.userService.setEmail(this.input_email);
-            this.router.navigate(['/home']);
+            const toast = await this.toastController.create({
+              message: response.message,
+              position: 'top',
+              duration: 2000,
+              cssClass: 'alert-class',
+            });
+            toast.present();
+            this.loading = false;
+            this.router.navigate(['/login']);
           } else {
-            console.log(response.message);
+            const toast = await this.toastController.create({
+              message: response.message,
+              position: 'top',
+              duration: 2000,
+              cssClass: 'alert-class',
+            });
+            toast.present();
+            this.loading = false;
           }
         },
-        (error) => {
-          console.log(error);
+        async (error) => {
+          const toast = await this.toastController.create({
+            message: 'Internal Server Error',
+            position: 'top',
+            duration: 2000,
+            cssClass: 'alert-class',
+          });
+          toast.present();
+          this.loading = false;
         }
       );
   }

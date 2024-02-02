@@ -143,3 +143,13 @@
     width: 100%;
   }
 }
+.search-button {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.alert-class {
+  background-color: #00000066 !important;
+  color: white !important;
+}

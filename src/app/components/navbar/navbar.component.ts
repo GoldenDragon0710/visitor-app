@@ -3,13 +3,29 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
+import { ToastController } from '@ionic/angular';
 
-interface LogOutResponse {
+interface ReturnKeyUserType {
+  first_name: string;
+  last_name: string;
+}
+
+interface ReturnKeyResponse {
+  data: ReturnKeyUserType;
   status: boolean;
   message?: string;
 }
 
-interface ReturnKeyResponse {
+interface UserType {
+  first_name: string;
+  last_name: string;
+  visitor_type: string;
+  company_name: string;
+  mobile_number: string;
+}
+
+interface GetUserResponse {
+  data: UserType;
   status: boolean;
   message?: string;
 }
@@ -21,86 +37,239 @@ interface ReturnKeyResponse {
 })
 export class NavbarComponent implements OnInit {
   constructor(
-    private barcodeScanner: BarcodeScanner,
     private http: HttpClient,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    public toastController: ToastController,
+    private barcodeScanner: BarcodeScanner
   ) {}
+  last_visitor = '';
+  qrData = '';
   email: string = '';
   search_mobile: string = '';
   search_name: string = '';
   ScannerBtn: boolean = true;
-  KeyReturn = false;
-  isDivVisible = false;
+  key_id = '';
+  isReturnKey = false;
+  return_name = '';
+  isStillVisiting = false;
+  @Output() navbarloading = new EventEmitter<boolean>(false);
   @Output() QRcode = new EventEmitter<string>();
+  @Output() input_fname = new EventEmitter<string>();
+  @Output() input_lname = new EventEmitter<string>();
+  @Output() input_visitor = new EventEmitter<string>();
+  @Output() input_mobile = new EventEmitter<string>();
+  @Output() input_company = new EventEmitter<string>();
 
-  toggleDiv() {
-    this.isDivVisible = !this.isDivVisible;
+  user_fname: string = '';
+  user_lname: string = '';
+  user_visitor: string = '';
+  user_mobile: string = '';
+  user_company: string = '';
+
+  closeStillVisiting() {
+    this.isStillVisiting = false;
   }
 
-  KeyButton() {
-    this.KeyReturn = !this.KeyReturn;
+  showData() {
+    this.input_fname.emit(this.user_fname);
+    this.input_lname.emit(this.user_lname);
+    this.input_visitor.emit(this.user_visitor);
+    this.input_mobile.emit(this.user_mobile);
+    this.input_company.emit(this.user_company);
+    this.isStillVisiting = false;
   }
 
-  returnKey() {
+  closeReturnKeyModal() {
+    this.isReturnKey = false;
+  }
+
+  ReturnKey() {
     const data = {
-      search_mobile: this.search_mobile,
-      search_name: this.search_name,
+      key_id: this.key_id,
     };
+    this.navbarloading.emit(true);
     this.http
       .post<ReturnKeyResponse>(
-        'http://localhost/index.php/history/returnKey',
+        'http://localhost/index.php/history/keyExpire',
         data
       )
       .subscribe(
-        (response: ReturnKeyResponse) => {
+        async (response: ReturnKeyResponse) => {
           if (response.status) {
-            console.log(response.message);
-            this.KeyReturn = !this.KeyReturn;
+            const toast = await this.toastController.create({
+              message: response.message,
+              position: 'top',
+              duration: 2000,
+              cssClass: 'alert-class',
+            });
+            toast.present();
           } else {
-            console.log(response.message);
-            this.KeyReturn = !this.KeyReturn;
+            const toast = await this.toastController.create({
+              message: response.message,
+              position: 'top',
+              duration: 2000,
+              cssClass: 'alert-class',
+            });
+            toast.present();
           }
+          this.navbarloading.emit(false);
+          this.isReturnKey = false;
         },
-        (error) => {
-          console.log(error);
-          this.KeyReturn = !this.KeyReturn;
+        async (err) => {
+          this.navbarloading.emit(false);
+          const toast = await this.toastController.create({
+            message: 'Internal Server Error',
+            position: 'top',
+            duration: 2000,
+            cssClass: 'alert-class',
+          });
+          toast.present();
+          this.isReturnKey = false;
         }
       );
   }
 
+  getUserbyKeyID() {
+    this.barcodeScanner
+      .scan()
+      .then((barcodeData) => {
+        this.key_id = barcodeData.text;
+        const data = {
+          key_id: barcodeData.text,
+        };
+        this.navbarloading.emit(true);
+        this.http
+          .post<ReturnKeyResponse>(
+            'http://localhost/index.php/history/getUserInfo',
+            data
+          )
+          .subscribe(
+            (response: ReturnKeyResponse) => {
+              if (response.status) {
+                this.return_name =
+                  response.data.first_name + response.data.last_name;
+              }
+              this.navbarloading.emit(false);
+              this.isReturnKey = true;
+            },
+            async (err) => {
+              this.navbarloading.emit(false);
+              const toast = await this.toastController.create({
+                message: 'Internal Server Error',
+                position: 'top',
+                duration: 2000,
+                cssClass: 'alert-class',
+              });
+              toast.present();
+            }
+          );
+      })
+      .catch(async (err) => {
+        this.navbarloading.emit(false);
+        const toast = await this.toastController.create({
+          message: 'Failed Scanning QR code',
+          position: 'top',
+          duration: 2000,
+          cssClass: 'alert-class',
+        });
+        toast.present();
+      });
+  }
+
   LogOut() {
-    this.email = this.userService.email;
-    const data = { email: this.email };
-    this.http
-      .post<LogOutResponse>('http://localhost/index.php/users/logout', data)
-      .subscribe(
-        (response: LogOutResponse) => {
-          if (response.status) {
-            this.router.navigate(['/login']);
-          } else {
-            console.log(response.message);
-          }
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+    this.navbarloading.emit(true);
+    setTimeout(() => {
+      this.navbarloading.emit(false);
+      this.router.navigate(['/login']);
+    }, 1000);
   }
 
   scanQRCode() {
     this.barcodeScanner
       .scan()
       .then((barcodeData) => {
-        console.log('Barcode data', barcodeData);
-        let str =
-          'firstName:thomas;lastName:wiliam;mobile:123456789;email:thomas@gmail.com';
-        this.QRcode.emit(str);
+        const data = {
+          key: barcodeData.text,
+          mobile_number: '',
+          first_name: '',
+        };
+        this.navbarloading.emit(true);
+        this.http
+          .post<GetUserResponse>(
+            'http://localhost/index.php/visitors/search',
+            data
+          )
+          .subscribe(
+            async (response: GetUserResponse) => {
+              this.navbarloading.emit(false);
+              if (response.status) {
+                this.user_fname = response.data.first_name;
+                this.user_lname = response.data.last_name;
+                this.user_visitor = response.data.visitor_type;
+                this.user_mobile = response.data.mobile_number;
+                this.user_company = response.data.company_name;
+              }
+              this.isStillVisiting = true;
+            },
+            async (err) => {
+              this.navbarloading.emit(false);
+              const toast = await this.toastController.create({
+                message: 'Internal Server Error',
+                position: 'top',
+                duration: 2000,
+                cssClass: 'alert-class',
+              });
+              toast.present();
+            }
+          );
       })
-      .catch((err) => {
-        console.log('Error', err);
+      .catch(async (err) => {
+        const toast = await this.toastController.create({
+          message: 'Failed Scanning QR code',
+          position: 'top',
+          duration: 2000,
+          cssClass: 'alert-class',
+        });
+        toast.present();
       });
   }
 
-  ngOnInit() {}
+  SearchVisitor() {
+    const data = {
+      mobile_number: this.search_mobile,
+      first_name: this.search_name,
+      key: '',
+    };
+    this.navbarloading.emit(true);
+    this.http
+      .post<GetUserResponse>('http://localhost/index.php/visitors/search', data)
+      .subscribe(
+        (response: GetUserResponse) => {
+          this.navbarloading.emit(false);
+          if (response.status) {
+            this.user_fname = response.data.first_name;
+            this.user_lname = response.data.last_name;
+            this.user_visitor = response.data.visitor_type;
+            this.user_mobile = response.data.mobile_number;
+            this.user_company = response.data.company_name;
+          }
+          this.isStillVisiting = true;
+        },
+        async (err) => {
+          this.navbarloading.emit(false);
+          const toast = await this.toastController.create({
+            message: 'Internal Server Error',
+            position: 'top',
+            duration: 2000,
+            cssClass: 'alert-class',
+          });
+          toast.present();
+        }
+      );
+  }
+
+  ngOnInit() {
+    this.last_visitor = this.userService.getLastVisitor();
+  }
 }
