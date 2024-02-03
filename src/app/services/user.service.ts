@@ -4,13 +4,13 @@ import { Injectable, OnDestroy, OnInit } from '@angular/core';
   providedIn: 'root',
 })
 export class UserService {
-  private data: string = '';
-  private lastVisitor: string = '';
-  private search_first_name: string = '';
-  private search_last_name: string = '';
-  private search_visitor_type: string = '';
-  private search_company_name: string = '';
-  private search_mobile_number: string = '';
+  public data: string = '';
+  public lastVisitor: string = '';
+  public search_first_name: string = '';
+  public search_last_name: string = '';
+  public search_visitor_type: string = '';
+  public search_company_name: string = '';
+  public search_mobile_number: string = '';
   setSchoolName(name: string): void {
     this.data = name;
   }

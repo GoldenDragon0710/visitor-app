@@ -66,6 +66,7 @@ export class LoginPage implements OnInit {
           if (response.status) {
             this.loading = false;
             this.userService.setSchoolName(response.data.school_name);
+            localStorage.setItem('school_name', response.data.school_name);
             this.router.navigate(['/home']);
           } else {
             this.loading = false;

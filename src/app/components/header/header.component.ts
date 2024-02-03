@@ -28,7 +28,10 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.school_name = this.userService.getSchoolName();
+    let temp = localStorage.getItem('school_name');
+    if (temp !== null) {
+      this.school_name = temp;
+    }
     setInterval(() => {
       this.updateDateTime();
     }, 1000); // Update every second

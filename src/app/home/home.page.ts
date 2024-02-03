@@ -92,8 +92,7 @@ export class HomePage implements OnInit {
       mobile_number: this.mobile_number,
       person_visiting: this.person_visiting,
       isSick: this.isSick,
-      key_id: 'lawkejrkwadhfkasjdfqwperuwqper',
-      // key_id: this.key_id,
+      key_id: this.key_id,
       key_duration: this.key_duration,
     };
     this.loading = true;
