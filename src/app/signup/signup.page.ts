@@ -72,7 +72,10 @@ export class SignUpPage implements OnInit {
     };
     this.loading = true;
     this.http
-      .post<SignUpResponse>('http://localhost/index.php/staff/register', data)
+      .post<SignUpResponse>(
+        'http://100.24.5.202/index.php/staff/register',
+        data
+      )
       .subscribe(
         async (response: SignUpResponse) => {
           if (response.status) {

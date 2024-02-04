@@ -91,7 +91,7 @@ export class NavbarComponent implements OnInit {
     this.navbarloading.emit(true);
     this.http
       .post<ReturnKeyResponse>(
-        'http://localhost/index.php/history/keyExpire',
+        'http://100.24.5.202/index.php/history/keyExpire',
         data
       )
       .subscribe(
@@ -141,7 +141,7 @@ export class NavbarComponent implements OnInit {
         this.navbarloading.emit(true);
         this.http
           .post<ReturnKeyResponse>(
-            'http://localhost/index.php/history/getUserbyKeyID',
+            'http://100.24.5.202/index.php/history/getUserbyKeyID',
             data
           )
           .subscribe(
@@ -197,7 +197,7 @@ export class NavbarComponent implements OnInit {
         this.navbarloading.emit(true);
         this.http
           .post<GetUserResponse>(
-            'http://localhost/index.php/visitors/search',
+            'http://100.24.5.202/index.php/visitors/search',
             data
           )
           .subscribe(
@@ -243,7 +243,10 @@ export class NavbarComponent implements OnInit {
     };
     this.navbarloading.emit(true);
     this.http
-      .post<GetUserResponse>('http://localhost/index.php/visitors/search', data)
+      .post<GetUserResponse>(
+        'http://100.24.5.202/index.php/visitors/search',
+        data
+      )
       .subscribe(
         (response: GetUserResponse) => {
           this.navbarloading.emit(false);

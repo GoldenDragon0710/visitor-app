@@ -8,13 +8,6 @@ const routes: Routes = [
       import('./home/home.module').then((m) => m.HomePageModule),
   },
   {
-    path: 'current-visitor',
-    loadChildren: () =>
-      import('./current-visitor/current-visitor.module').then(
-        (m) => m.CurrentVisitorPageModule
-      ),
-  },
-  {
     path: 'dashboard',
     loadChildren: () =>
       import('./dashboard/dashboard.module').then((m) => m.DashboardPageModule),
@@ -37,7 +30,7 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'login',
+    path: '',
     loadChildren: () =>
       import('./login/login.module').then((m) => m.LoginPageModule),
   },

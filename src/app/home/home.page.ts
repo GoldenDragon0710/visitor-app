@@ -23,6 +23,7 @@ export class HomePage implements OnInit {
   isSick: boolean = true;
   key_id: string = '';
   key_duration: number = 1;
+  school_name: string = '';
   loading: boolean = false;
   isCapture: boolean = false;
   isPhotoCaptured: boolean = false;
@@ -94,10 +95,14 @@ export class HomePage implements OnInit {
       isSick: this.isSick,
       key_id: this.key_id,
       key_duration: this.key_duration,
+      school_name: localStorage.getItem('school_name'),
     };
     this.loading = true;
     this.http
-      .post<ReturnResponse>('http://localhost/index.php/history/create', data)
+      .post<ReturnResponse>(
+        'http://100.24.5.202/index.php/history/create',
+        data
+      )
       .subscribe(
         async (response: ReturnResponse) => {
           if (response.status) {

@@ -55,7 +55,10 @@ export class DashboardPage implements OnInit {
     };
     this.loading = true;
     this.http
-      .post<ReturnKeyType>('http://localhost/index.php/history/keyExpire', data)
+      .post<ReturnKeyType>(
+        'http://100.24.5.202/index.php/history/keyExpire',
+        data
+      )
       .subscribe(
         async (response: ReturnKeyType) => {
           if (response.status) {
@@ -95,8 +98,14 @@ export class DashboardPage implements OnInit {
 
   ngOnInit() {
     this.loading = true;
+    const data = {
+      school_name: localStorage.getItem('school_name'),
+    };
     this.http
-      .get<CurrentVisitorsType>('http://localhost/index.php/history/getAllUser')
+      .post<CurrentVisitorsType>(
+        'http://100.24.5.202/index.php/history/getAll',
+        data
+      )
       .subscribe(
         async (response: CurrentVisitorsType) => {
           if (response.status) {

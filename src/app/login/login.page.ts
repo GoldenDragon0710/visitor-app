@@ -60,7 +60,7 @@ export class LoginPage implements OnInit {
     this.input_password = this.loginForm.controls['password'].value;
     const data = { email: this.input_email, password: this.input_password };
     this.http
-      .post<LoginResponse>('http://localhost/index.php/staff/login', data)
+      .post<LoginResponse>('http://100.24.5.202/index.php/staff/login', data)
       .subscribe(
         async (response: LoginResponse) => {
           if (response.status) {

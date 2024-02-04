@@ -54,8 +54,14 @@ export class RollCallPage implements OnInit {
 
   ngOnInit() {
     this.loading = true;
+    const data = {
+      school_name: localStorage.getItem('school_name'),
+    };
     this.http
-      .get<CurrentVisitorsType>('http://localhost/index.php/history/getAllUser')
+      .post<CurrentVisitorsType>(
+        'http://100.24.5.202/index.php/history/getAll',
+        data
+      )
       .subscribe(
         async (response: CurrentVisitorsType) => {
           if (response.status) {

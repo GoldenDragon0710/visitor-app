@@ -43,7 +43,7 @@ export class CurrentNavbarComponent implements OnInit {
         };
         this.http
           .post<ReturnKeyResponse>(
-            'http://localhost/index.php/history/keyExpire',
+            'http://100.24.5.202/index.php/history/keyExpire',
             data
           )
           .subscribe(
